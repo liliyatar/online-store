@@ -1,0 +1,16 @@
+.navbar {
+  justify-content: space-between;
+}
+
+.menu__item {
+	display: inline-block;
+  padding-right: 1rem;
+}
+
+.menu__link {
+	color: #fff;;
+}
+
+.active {
+  text-decoration-line: underline;
+}

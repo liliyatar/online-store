@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="navbar">
+  <a routerLink="/" class="menu__link">Интернет-магазин</a>
+  <ul class="menu">
+    <li routerLinkActive="active" class="menu__item">
+      <a routerLink="/login" class="menu__link">Вход</a>
+    </li>
+    <li routerLinkActive="active" class="menu__item">
+      <a routerLink="/register" class="menu__link">Регистрация</a>
+    </li>
+  </ul>
+</mat-toolbar>
+
+<div class="auth-block">
+  <router-outlet></router-outlet>
+</div>

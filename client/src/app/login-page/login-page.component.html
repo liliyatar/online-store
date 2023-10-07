@@ -1,0 +1,35 @@
+<form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="card-content">
+    <!-- <span class="card-title">Войти в систему</span> -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Почта</mat-label>
+      <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" placeholder="Введите почту...">
+      <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
+        Введите корректную почту
+      </mat-error>
+      <mat-error *ngIf="form.get('email').hasError('required')">
+        Поле не должно быть <strong>пустым</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Пароль</mat-label>
+      <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" [errorStateMatcher]="matcher"
+        placeholder="Введитe пароль...">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide" type="button">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('password').hasError('required')">
+        Поле не должно быть <strong>пустым</strong>
+      </mat-error>
+      <mat-error
+        *ngIf="form.get('password').hasError('minlength') && form.get('password').errors['minlength']['requiredLength']">
+        Пароль должен быть больше {{form.get('password').errors['minlength']['requiredLength']}} символов.
+        Сейчас {{form.get('password').errors['minlength']['actualLength']}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="card-action">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || form.disabled">Войти</button>
+  </div>
+</form>
